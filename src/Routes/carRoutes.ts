@@ -9,5 +9,6 @@ const carController = new CarController(carService);
 const carsRouter = Router();
 
 carsRouter.post('/', FiledsValidator.createCar, carController.create);
+carsRouter.get('/', carController.read);
 
 export default carsRouter;
