@@ -19,4 +19,10 @@ export default class CarController {
 
     return res.status(HttpStatus.CREATED).json(car);
   };
+
+  public read = async (req: Request, res: Response) => {
+    const cars = await this._carService.read();
+
+    return res.status(HttpStatus.OK).json(cars);
+  };
 }
