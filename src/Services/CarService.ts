@@ -1,4 +1,5 @@
 import Car from '../Domains/Car';
+import NotFoundError from '../Errors/NotFoundError';
 import ICar from '../Interfaces/ICar';
 import ICarService from '../Interfaces/ICarService';
 import CarODM from '../Models/CarODM';
@@ -40,5 +41,12 @@ export default class CarService implements ICarService {
     return cars.map((car) => (
       this._createCarDomain(car as Required<ICar>)
     ));
+  };
+
+  public readOne = async (id: string): Promise<Car> => {
+    const car = await this._carODM.readOne(id);
+    if (!car) { throw new NotFoundError('Car not found'); }
+
+    return this._createCarDomain(car as Required<ICar>);
   };
 }
