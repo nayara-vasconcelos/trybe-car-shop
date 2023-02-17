@@ -32,4 +32,13 @@ export default class CarService implements ICarService {
 
     return this._createCarDomain(newCar as Required<ICar>);
   };
+
+  public read = async (): Promise<Car[] | []> => {
+    const cars = await this._carODM.read();
+
+    if (cars.length === 0) { return cars as []; }
+    return cars.map((car) => (
+      this._createCarDomain(car as Required<ICar>)
+    ));
+  };
 }
