@@ -10,5 +10,6 @@ const carsRouter = Router();
 
 carsRouter.post('/', FiledsValidator.createCar, carController.create);
 carsRouter.get('/', carController.read);
+carsRouter.get('/:id', carController.readOne);
 
 export default carsRouter;
