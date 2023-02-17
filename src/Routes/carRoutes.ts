@@ -3,6 +3,8 @@ import CarController from '../Controllers/CarController';
 import FiledsValidator from '../Middlewares/FieldsValidator';
 import CarService from '../Services/CarService';
 
+require('express-async-errors');
+
 const carService = new CarService();
 const carController = new CarController(carService);
 
