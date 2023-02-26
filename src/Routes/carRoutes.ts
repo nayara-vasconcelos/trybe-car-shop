@@ -1,6 +1,6 @@
 import { Router } from 'express';
 import CarController from '../Controllers/CarController';
-import FiledsValidator from '../Middlewares/FieldsValidator';
+import FieldsValidator from '../Middlewares/FieldsValidator';
 import CarService from '../Services/CarService';
 
 require('express-async-errors');
@@ -10,8 +10,9 @@ const carController = new CarController(carService);
 
 const carsRouter = Router();
 
-carsRouter.post('/', FiledsValidator.createCar, carController.create);
+carsRouter.post('/', FieldsValidator.createCar, carController.create);
 carsRouter.get('/', carController.read);
 carsRouter.get('/:id', carController.readOne);
+carsRouter.put('/:id', FieldsValidator.updateCar, carController.updateOne);
 
 export default carsRouter;
