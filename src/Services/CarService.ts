@@ -49,4 +49,11 @@ export default class CarService implements ICarService {
 
     return this._createCarDomain(car as Required<ICar>);
   };
+
+  public updateOne = async (id: string, car: ICar): Promise<Car> => {
+    const updatedCar = await this._carODM.updateOne(id, car);
+    if (!updatedCar) { throw new NotFoundError('Car not found'); }
+
+    return this._createCarDomain(updatedCar as Required<ICar>);
+  };
 }
