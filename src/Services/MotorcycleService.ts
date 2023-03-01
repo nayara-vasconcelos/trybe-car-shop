@@ -1,6 +1,7 @@
 import Motorcycle from '../Domains/Motorcycle';
 import MotorcycleCategories from '../Enums/motorcycleCategories';
 import InvalidInputError from '../Errors/InvalidInputError';
+import NotFoundError from '../Errors/NotFoundError';
 import IMotorcycle from '../Interfaces/IMotorcycle';
 import IMotorcycleService from '../Interfaces/IMotorcycleService';
 import MotorcycleODM from '../Models/MotorcycleODM';
@@ -51,5 +52,12 @@ export default class MotorcycleService implements IMotorcycleService {
     return motorcycles.map((motorcycle) => (
       this._createMotorcycleDomain(motorcycle as Required<IMotorcycle>)
     ));
+  };
+
+  public readOne = async (id: string): Promise<Motorcycle> => {
+    const motorcycle = await this._motorcycleODM.readOne(id);
+    if (!motorcycle) { throw new NotFoundError('Motorcycle not found'); }
+
+    return this._createMotorcycleDomain(motorcycle as Required<IMotorcycle>);
   };
 }
