@@ -5,8 +5,8 @@ import IMotorcycle from '../../../src/Interfaces/IMotorcycle';
 import Motorcycle from '../../../src/Domains/Motorcycle';
 import MotorcycleService from '../../../src/Services/MotorcycleService';
 
-describe('Deve ser possível criar carros', function () {
-  it('Adiciona carro com sucesso', async function () {
+describe('Deve ser possível criar motos', function () {
+  it('Adiciona moto com sucesso', async function () {
     const motorcycleInput: IMotorcycle = {
       model: 'Honda Cb 600f Hornet',
       year: 2005,
