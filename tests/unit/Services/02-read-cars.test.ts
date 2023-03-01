@@ -9,7 +9,7 @@ describe('Deve ser possível listar carros', function () {
   it('Lista todos os carros com sucesso', async function () {
     const carsMock: ICar[] = [
       {
-        _id: '634852326b35b59438fbea2f',
+        id: '634852326b35b59438fbea2f',
         model: 'Marea',
         year: 2002,
         color: 'Black',
@@ -19,7 +19,7 @@ describe('Deve ser possível listar carros', function () {
         seatsQty: 5,
       },
       {
-        _id: '634852326b35b59438fbea31',
+        id: '634852326b35b59438fbea31',
         model: 'Tempra',
         year: 1995,
         color: 'Black',

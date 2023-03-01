@@ -18,7 +18,7 @@ describe('Deve ser possível criar carros', function () {
     };
 
     const carMock: ICar = {
-      _id: '634852326b35b59438fbea2f',
+      id: '634852326b35b59438fbea2f',
       model: 'Marea',
       year: 1992,
       color: 'Red',
@@ -29,7 +29,7 @@ describe('Deve ser possível criar carros', function () {
     };
 
     const expectedOutput: Car = new Car({
-      _id: '634852326b35b59438fbea2f',
+      id: '634852326b35b59438fbea2f',
       model: 'Marea',
       year: 1992,
       color: 'Red',
