@@ -43,4 +43,13 @@ export default class MotorcycleService implements IMotorcycleService {
 
     return this._createMotorcycleDomain(newMotorcycle as Required<IMotorcycle>);
   };
+
+  public read = async (): Promise<Motorcycle[] | []> => {
+    const motorcycles = await this._motorcycleODM.read();
+
+    if (motorcycles.length === 0) { return motorcycles as []; }
+    return motorcycles.map((motorcycle) => (
+      this._createMotorcycleDomain(motorcycle as Required<IMotorcycle>)
+    ));
+  };
 }
