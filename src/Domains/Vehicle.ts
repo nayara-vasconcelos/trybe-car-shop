@@ -9,8 +9,8 @@ export default abstract class Vehicle {
   protected buyValue: number;
 
   constructor(vehicle: IVehicle) {
-    if (vehicle._id) {
-      this.id = vehicle._id;
+    if (vehicle.id) {
+      this.id = vehicle.id;
     }
     this.model = vehicle.model;
     this.year = vehicle.year;
