@@ -24,4 +24,14 @@ export default class MotorcycleController {
       next(error);
     }
   };
+
+  public read = async (req: Request, res: Response, next: NextFunction) => {
+    try {
+      const motorcycles = await this._motorcycleService.read();
+
+      return res.status(HttpStatus.OK).json(motorcycles);
+    } catch (error) {
+      next(error);
+    }
+  };
 }
