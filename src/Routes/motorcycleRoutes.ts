@@ -9,5 +9,6 @@ const motorcycleController = new MotorcycleController(motorcycleService);
 const motorcyclesRouter = Router();
 
 motorcyclesRouter.post('/', FieldsValidator.createMotorcycle, motorcycleController.create);
+motorcyclesRouter.get('/', motorcycleController.read);
 
 export default motorcyclesRouter;
