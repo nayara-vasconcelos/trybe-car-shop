@@ -11,5 +11,6 @@ const motorcyclesRouter = Router();
 motorcyclesRouter.post('/', FieldsValidator.createMotorcycle, motorcycleController.create);
 motorcyclesRouter.get('/', motorcycleController.read);
 motorcyclesRouter.get('/:id', motorcycleController.readOne);
+motorcyclesRouter.put('/:id', FieldsValidator.updateMotorcycle, motorcycleController.updateOne);
 
 export default motorcyclesRouter;
