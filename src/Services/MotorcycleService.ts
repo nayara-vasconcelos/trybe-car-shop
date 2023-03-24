@@ -30,16 +30,14 @@ export default class MotorcycleService implements IMotorcycleService {
     });
   };
 
-  private validateCategory = (category: string): void => {
-    if (category !== MotorcycleCategories.Street
-      && category !== MotorcycleCategories.Custom
-      && category !== MotorcycleCategories.Trail) {
+  private validateCategory = (category: MotorcycleCategories): void => {
+    if (!MotorcycleCategories[category]) {
       throw new InvalidInputError('Invalid category');
     }
   };
 
   public create = async (motorcycle: IMotorcycle): Promise<Motorcycle> => {
-    this.validateCategory(motorcycle.category);
+    this.validateCategory(motorcycle.category as MotorcycleCategories);
     const newMotorcycle = await this._motorcycleODM.create(motorcycle);
 
     return this._createMotorcycleDomain(newMotorcycle as Required<IMotorcycle>);
@@ -59,5 +57,13 @@ export default class MotorcycleService implements IMotorcycleService {
     if (!motorcycle) { throw new NotFoundError('Motorcycle not found'); }
 
     return this._createMotorcycleDomain(motorcycle as Required<IMotorcycle>);
+  };
+
+  public updateOne = async (id: string, motorcycle: IMotorcycle): Promise<Motorcycle> => {
+    this.validateCategory(motorcycle.category as MotorcycleCategories);
+    const updatedMotorcycle = await this._motorcycleODM.updateOne(id, motorcycle);
+    if (!updatedMotorcycle) { throw new NotFoundError('Motorcycle not found'); }
+
+    return this._createMotorcycleDomain(updatedMotorcycle as Required<IMotorcycle>);
   };
 }
