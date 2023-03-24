@@ -19,4 +19,9 @@ export default class FieldsValidator {
     new MotorcycleValidator(req.body as IMotorcycle).validateAll();
     next();
   };
+
+  public static updateMotorcycle = (req: Request, _res: Response, next: NextFunction) => {
+    new MotorcycleValidator(req.body as IMotorcycle).validateAll();
+    next();
+  };
 }
